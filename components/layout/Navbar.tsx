@@ -190,11 +190,13 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {isMenuOpen && (
-        <MobileMenu
-          onClose={closeMenu}
-          language={language}
-          onLanguageChange={setLanguage}
-        />
+      <MobileMenu
+        onClose={closeMenu}
+        language={language}
+        onLanguageChange={setLanguage}
+        isDark={isDark}
+        onToggleTheme={toggleTheme}
+      />
       )}
     </>
   );

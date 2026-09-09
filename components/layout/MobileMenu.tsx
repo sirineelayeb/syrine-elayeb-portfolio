@@ -1,20 +1,24 @@
 import Link from "next/link";
+import { Moon, Sun } from "lucide-react";
 
 import type { Language } from "@/components/providers/LanguageProvider";
+import { getTranslations } from "@/lib/translations";
 
 interface MobileMenuProps {
   onClose: () => void;
   language: Language;
   onLanguageChange: (language: Language) => void;
+  isDark: boolean;
+  onToggleTheme: () => void;
 }
 
 const navigation = [
-  { name: "About", href: "/#about" },
-  { name: "Skills", href: "/#skills" },
-  { name: "Projects", href: "/#projects" },
-  { name: "Experience", href: "/#experience" },
-  { name: "Contact", href: "/#contact" },
-];
+  { key: "about", href: "/#about" },
+  { key: "skills", href: "/#skills" },
+  { key: "projects", href: "/#projects" },
+  { key: "experience", href: "/#experience" },
+  { key: "contact", href: "/#contact" },
+] as const;
 
 const languages: Language[] = ["EN", "FR"];
 
@@ -22,7 +26,11 @@ export default function MobileMenu({
   onClose,
   language,
   onLanguageChange,
+  isDark,
+  onToggleTheme,
 }: MobileMenuProps) {
+  const t = getTranslations(language);
+
   return (
     <div className="fixed inset-x-0 top-16 z-40 border-b border-border bg-background md:hidden">
       <div className="mx-auto max-w-6xl px-6 py-6">
@@ -30,23 +38,24 @@ export default function MobileMenu({
         <nav className="flex flex-col">
           {navigation.map((item) => (
             <Link
-              key={item.name}
+              key={item.key}
               href={item.href}
               onClick={onClose}
               className="border-b border-border py-4 text-sm font-medium transition-colors hover:text-violet"
             >
-              {item.name}
+              {t.nav[item.key]}
             </Link>
           ))}
         </nav>
 
-        {/* Language */}
+        {/* Language & Theme */}
         <div className="mt-6">
           <p className="mb-3 text-xs font-medium uppercase tracking-wider text-muted">
-            Language
+            {t.language}
           </p>
 
-          <div className="flex gap-2">
+          <div className="flex items-center gap-2">
+            {/* Language buttons */}
             {languages.map((lang) => (
               <button
                 key={lang}
@@ -62,6 +71,30 @@ export default function MobileMenu({
                 {lang}
               </button>
             ))}
+
+            {/* Theme toggle */}
+            <button
+              type="button"
+              onClick={onToggleTheme}
+              aria-label={
+                isDark ? "Switch to light mode" : "Switch to dark mode"
+              }
+              className="group flex h-9 w-9 items-center justify-center rounded-full border border-border bg-surface text-muted transition-all duration-300 hover:border-violet/30 hover:bg-gradient-to-r hover:from-violet/5 hover:to-cyan/5 hover:text-violet"
+            >
+              {isDark ? (
+                <Sun
+                  size={17}
+                  strokeWidth={1.8}
+                  className="transition-transform duration-300 group-hover:rotate-12"
+                />
+              ) : (
+                <Moon
+                  size={17}
+                  strokeWidth={1.8}
+                  className="transition-transform duration-300 group-hover:-rotate-12"
+                />
+              )}
+            </button>
           </div>
         </div>
 
@@ -74,7 +107,7 @@ export default function MobileMenu({
             rel="noopener noreferrer"
             className="rounded-full border border-border px-4 py-3 text-center text-sm font-medium transition-colors hover:bg-surface hover:text-violet"
           >
-            LinkedIn
+            {t.actions.linkedin}
           </a>
 
           {/* Download CV */}
@@ -83,16 +116,16 @@ export default function MobileMenu({
             download
             className="rounded-full border border-border px-4 py-3 text-center text-sm font-medium transition-colors hover:bg-surface hover:text-violet"
           >
-            Download CV
+            {t.actions.downloadCV}
           </a>
 
-          {/* Contact */}
+          {/* Let's talk */}
           <Link
             href="/#contact"
             onClick={onClose}
-            className="rounded-full bg-foreground px-4 py-3 text-center text-sm font-medium text-background transition-opacity hover:opacity-80"
+            className="rounded-full bg-gradient-to-r from-violet to-cyan px-4 py-3 text-center text-sm font-medium text-white transition-all duration-300 hover:-translate-y-0.5 hover:opacity-90"
           >
-            Let&apos;s talk
+            {t.actions.letsTalk}
           </Link>
         </div>
       </div>
