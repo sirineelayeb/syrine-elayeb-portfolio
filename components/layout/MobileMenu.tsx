@@ -9,11 +9,11 @@ interface MobileMenuProps {
 }
 
 const navigation = [
-  { name: "About", href: "#about" },
-  { name: "Skills", href: "#skills" },
-  { name: "Projects", href: "#projects" },
-  { name: "Experience", href: "#experience" },
-  { name: "Contact", href: "#contact" },
+  { name: "About", href: "/#about" },
+  { name: "Skills", href: "/#skills" },
+  { name: "Projects", href: "/#projects" },
+  { name: "Experience", href: "/#experience" },
+  { name: "Contact", href: "/#contact" },
 ];
 
 const languages: Language[] = ["EN", "FR"];
@@ -88,7 +88,7 @@ export default function MobileMenu({
 
           {/* Contact */}
           <Link
-            href="#contact"
+            href="/#contact"
             onClick={onClose}
             className="rounded-full bg-foreground px-4 py-3 text-center text-sm font-medium text-background transition-opacity hover:opacity-80"
           >

@@ -73,7 +73,7 @@ export default function Navbar() {
   return (
     <>
       <header className="fixed top-0 z-50 w-full border-b border-border/60 bg-background/80 backdrop-blur-md">
-        <nav className="mx-auto grid h-16 max-w-7xl grid-cols-[minmax(180px,1fr)_auto_minmax(320px,1fr)] items-center px-6">
+        <nav className="mx-auto grid h-16 max-w-7xl grid-cols-[1fr_auto] items-center px-6 md:grid-cols-[minmax(180px,1fr)_auto_minmax(320px,1fr)]">
           {/* Logo */}
           <Link
             href="/"
@@ -174,14 +174,10 @@ export default function Navbar() {
           {/* Mobile menu button */}
           <button
             type="button"
-            aria-label={
-              isMenuOpen ? "Close menu" : "Open menu"
-            }
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
             aria-expanded={isMenuOpen}
-            onClick={() =>
-              setIsMenuOpen((open) => !open)
-            }
-            className="col-start-3 ml-auto flex h-10 w-10 items-center justify-center rounded-md border border-border transition-colors hover:border-violet/30 hover:bg-violet/5 md:hidden"
+            onClick={() => setIsMenuOpen((open) => !open)}
+            className="ml-auto flex h-10 w-10 items-center justify-center rounded-md border border-border transition-colors hover:border-violet/30 hover:bg-violet/5 md:hidden"
           >
             <div className="flex flex-col gap-1.5">
               <span className="block h-0.5 w-5 bg-foreground" />
