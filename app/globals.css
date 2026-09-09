@@ -1,26 +1,258 @@
 @import "tailwindcss";
 
+/* ============================================================
+   COLOR SYSTEM
+   ============================================================ */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fafbff;
+  --foreground: #172033;
+
+  --muted: #667085;
+
+  --border: #e5e7eb;
+
+  --surface: #ffffff;
+  --surface-hover: #f8f9fc;
+
+  /* Brand colors */
+  --violet: #7c3aed;
+  --indigo: #6366f1;
+  --cyan: #06b6d4;
+
+  /* Gradient */
+  --gradient-primary: linear-gradient(
+    120deg,
+    var(--violet),
+    var(--cyan)
+  );
+
+  /* Soft gradient background */
+  --gradient-soft: linear-gradient(
+    120deg,
+    rgba(124, 58, 237, 0.08),
+    rgba(6, 182, 212, 0.08)
+  );
+
+  /* Individual accent */
+  --accent: var(--indigo);
+  --accent-hover: var(--violet);
 }
+.dark {
+  --background: #0b0d14;
+  --foreground: #f4f4f5;
+  --muted: #a1a1aa;
+  --border: #272a36;
+  --surface: #131620;
+  --surface-hover: #1a1d29;
+
+  --violet: #8b5cf6;
+  --indigo: #818cf8;
+  --cyan: #22d3ee;
+
+  --accent: var(--indigo);
+  --accent-hover: var(--violet);
+}
+.dark body::before {
+  background:
+    linear-gradient(
+      rgba(139, 92, 246, 0.035) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(34, 211, 238, 0.025) 1px,
+      transparent 1px
+    ),
+    radial-gradient(
+      circle at 85% 0%,
+      rgba(139, 92, 246, 0.16),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 10% 25%,
+      rgba(34, 211, 238, 0.08),
+      transparent 25%
+    );
+
+  background-size:
+    40px 40px,
+    40px 40px,
+    auto,
+    auto;
+}
+/* ============================================================
+   TAILWIND THEME
+   ============================================================ */
 
 @theme inline {
+  --font-sans: var(--font-sora);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+
+  --color-surface: var(--surface);
+  --color-surface-hover: var(--surface-hover);
+
+  --color-violet: var(--violet);
+  --color-indigo: var(--indigo);
+  --color-cyan: var(--cyan);
+
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ============================================================
+   BASE
+   ============================================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
+  position: relative;
+  margin: 0;
+  min-height: 100vh;
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sora), sans-serif;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      rgba(124, 58, 237, 0.035) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(124, 58, 237, 0.035) 1px,
+      transparent 1px
+    ),
+    radial-gradient(
+      circle at 85% 0%,
+      rgba(124, 58, 237, 0.12),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 10% 25%,
+      rgba(6, 182, 212, 0.07),
+      transparent 25%
+    );
+
+  background-size:
+    40px 40px,
+    40px 40px,
+    auto,
+    auto;
+
+  opacity: 1;
+}
+
+/* ============================================================
+   LINKS
+   ============================================================ */
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ============================================================
+   SELECTION
+   ============================================================ */
+
+::selection {
+  background: var(--violet);
+  color: white;
+}
+
+/* ============================================================
+   FOCUS
+   ============================================================ */
+
+:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 3px;
+}
+
+/* ============================================================
+   SCROLLBAR
+   ============================================================ */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d4d4d8;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a1a1aa;
+}
+
+/* ============================================================
+   GRADIENT UTILITIES
+   ============================================================ */
+
+.gradient-text {
+  background: var(--gradient-primary);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.gradient-bg {
+  background: var(--gradient-primary);
+}
+
+.gradient-soft {
+  background: var(--gradient-soft);
+}
+/* ============================================================
+   ENTRANCE ANIMATIONS
+   ============================================================ */
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 1.2s ease-out both;
 }
