@@ -16,7 +16,7 @@ const navigation = [
   { name: "Contact", href: "#contact" },
 ];
 
-const languages: Language[] = ["EN", "FR", "AR"];
+const languages: Language[] = ["EN", "FR"];
 
 export default function MobileMenu({
   onClose,
