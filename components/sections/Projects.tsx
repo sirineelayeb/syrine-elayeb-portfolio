@@ -23,9 +23,15 @@ export default function Projects() {
       <div className="mx-auto max-w-6xl px-6">
         {/* Header */}
         <div className="mx-auto max-w-3xl text-center">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-accent">
-            {t.projects.label}
-          </p>
+          <div className="mb-5 inline-flex items-center gap-3">
+            <span className="h-px w-8 bg-gradient-to-r from-violet to-cyan" />
+
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-accent">
+              {t.projects.label}
+            </p>
+
+            <span className="h-px w-8 bg-gradient-to-r from-cyan to-violet" />
+          </div>
 
           <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
             {t.projects.title}{" "}

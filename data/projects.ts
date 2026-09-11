@@ -114,7 +114,7 @@ export const projects: Project[] = [
         src: "/images/projects/ai-robot-health-monitoring/engineer-management.png",
       },
     ],
-    github: "sirineelayeb/ai-robot-health-monitoring",
+    github: "https://github.com/sirineelayeb/ai-robot-health-monitoring.git",
     featured: true,
   },
 
@@ -124,7 +124,7 @@ export const projects: Project[] = [
     category: "Full-Stack",
     technologies: ["Angular", "Spring Boot", "MySQL", "Java"],
     github:
-      "sirineelayeb/E-Learning-Platform-Project.git",
+      "https://github.com/sirineelayeb/E-Learning-Platform-Project",
     featured: true,
   },
 ];
