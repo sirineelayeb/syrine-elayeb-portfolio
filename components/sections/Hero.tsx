@@ -52,7 +52,7 @@ export default function Hero() {
             </Link>
 
             <a
-              href="/cv/Syrine_Elayeb_CV.pdf"
+              href="/cv/Syrine_Elayeb__Resume.pdf"
               download
               className="inline-flex items-center justify-center rounded-full px-4 py-3 text-sm font-medium text-muted transition-colors hover:text-violet"
             >

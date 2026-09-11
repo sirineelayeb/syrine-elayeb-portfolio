@@ -112,7 +112,7 @@ export default function MobileMenu({
 
           {/* Download CV */}
           <a
-            href="/cv/Syrine_Elayeb_CV.pdf"
+            href="/cv/Syrine_Elayeb__Resume.pdf"
             download
             className="rounded-full border border-border px-4 py-3 text-center text-sm font-medium transition-colors hover:bg-surface hover:text-violet"
           >

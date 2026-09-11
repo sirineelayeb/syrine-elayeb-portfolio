@@ -156,7 +156,7 @@ export default function Navbar() {
 
             {/* Download CV */}
             <a
-              href="/cv/Syrine_Elayeb_CV.pdf"
+              href="/cv/Syrine_Elayeb__Resume.pdf"
               download
               aria-label={t.actions.downloadCV}
               className="group inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-2 text-sm font-medium text-foreground transition-all duration-300 hover:border-violet/30 hover:bg-gradient-to-r hover:from-violet/5 hover:to-cyan/5 hover:text-violet"
